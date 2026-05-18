@@ -41,7 +41,11 @@ func (m *Model) UpdateSize(w, h int) {
 	m.Width = w
 	m.Height = h
 	m.VP.Width = w
-	m.VP.Height = h - 3
+	if h > 3 {
+		m.VP.Height = h - 3
+	} else {
+		m.VP.Height = 1
+	}
 }
 
 func (m *Model) SetIssue(issue repo.Issue, renderer render.Renderer) {
